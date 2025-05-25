@@ -70,3 +70,10 @@ class rendimiento():
             if not archivo_existe:
                 escritor.writeheader()
             escritor.writerow(registro)
+
+    def reporte_general(self): 
+         archivo_existe = os.path.isfile('deportes.csv')
+         if archivo_existe:
+            df = pd.read_csv(archivo)
+            reporte = df[["Nombre", "Puntaje_total", "Clasificacion"]]
+            return reporte

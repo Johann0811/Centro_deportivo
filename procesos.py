@@ -85,4 +85,37 @@ class rendimiento():
         individual = pd.DataFrame([df.loc[busqueda].to_dict()])
         df_individual = (individual[["Nombre", "Puntaje_total", "Clasificacion"]])
         return df_individual
+
+
+class DataAnalyzer():
+    def __init__(self, df):
+        self.df = df
+
+class PuntajeAnalyzer(DataAnalyzer):
+    def __init__(self, df):
+        super().__init__(df)
+        self.puntajes_cols = ["Puntaje_resistencia", "Puntaje_fuerza", "Puntaje_velocidad"]
+        self.describe_cols = ["Puntaje_resistencia_final", "Puntaje_fuerza_final", "Puntaje_velocidad_final", "Puntaje_total"]
+
+    def estadistica_grupal(self):
+        plt.figure(figsize=(14,7))
+        plt.subplot(1,2,1)
+        correlation = self.df[self.puntajes_cols].corr()
+        sns.heatmap(correlation, annot=True, cmap='seismic')
+        plt.title('Matriz de Correlación')
+        plt.subplot(1,2,2)
+        Clasificados = self.df['Clasificacion'].value_counts()
+        plt.title("Porcentaje de clasificados y no clasificados")
+        plt.pie(Clasificados, colors = ["#008000", "#8B0000"])
+        plt.legend(Clasificados, labels = Clasificados.index)
+        plt.grid()
+        plt.show()    
+
+    def promedio(self):
+        promediar = round(sum(self.df['Puntaje_total'])/len(self.df['Puntaje_total']))      
+        return promediar
+    
+    def describe(self):
+        resumen = self.df[self.describe_cols].describe() 
+        return resumen
         

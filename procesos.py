@@ -84,6 +84,40 @@ class rendimiento():
         busqueda = df[df["Nombre"] == Nombre_buscar].index[0]
         individual = pd.DataFrame([df.loc[busqueda].to_dict()])
         df_individual = (individual[["Nombre", "Puntaje_total", "Clasificacion"]])
+
+        plt.figure(figsize=(10,8))
+        plt.suptitle('Histogramas de Puntajes, dificultades y ponderados')
+        plt.subplot(3,3,1)
+        sns.histplot(individual["Puntaje_resistencia"], bins=10, color="#2727FF")
+        plt.title("Resistencia")
+        plt.subplot(3,3,2)
+        sns.histplot(individual["Puntaje_fuerza"], bins=10, color="#FF2424")
+        plt.title("Fuerza")
+        plt.subplot(3,3,3)
+        sns.histplot(individual["Puntaje_velocidad"], bins=10, color="#69FF23")
+        plt.title("Velocidad")
+        plt.subplot(3,3,4)
+        sns.histplot(individual["dificultad_resistencia"], bins=10, color="#1717A1")
+        plt.title("Dificultad de resistencia")
+        plt.subplot(3,3,5)
+        sns.histplot(individual["dificultad_fuerza"], bins=10, color="#B81919")
+        plt.title("Dificultad de Fuerza")
+        plt.subplot(3,3,6)
+        sns.histplot(individual["dificultad_velocidad"], bins=10, color="#3F911A")
+        plt.title("Dificultad de velocidad")
+        plt.subplot(3,3,7)
+        sns.histplot(individual["Puntaje_resistencia_final"], bins=10, color="#0C0C55")
+        plt.title("Total resistencia")
+        plt.subplot(3,3,8)
+        sns.histplot(individual["Puntaje_fuerza_final"], bins=10, color="#4C0A0A")
+        plt.title("Total fuerza")
+        plt.subplot(3,3,9)
+        sns.histplot(individual["Puntaje_velocidad_final"], bins=10, color="#224B0F")
+        plt.title("Total velocidad")
+
+        plt.tight_layout(rect=[0, 0, 1, 1])
+        #https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.tight_layout.html
+        plt.show()
         return df_individual
 
 

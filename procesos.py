@@ -77,3 +77,12 @@ class rendimiento():
             df = pd.read_csv(archivo)
             reporte = df[["Nombre", "Puntaje_total", "Clasificacion"]]
             return reporte
+
+    def reporte_individual(self):
+        Nombre_buscar = simpledialog.askstring("Busqueda por nombre", "De cual participante desea ver el reporte?: ")
+        df = pd.read_csv(archivo)
+        busqueda = df[df["Nombre"] == Nombre_buscar].index[0]
+        individual = pd.DataFrame([df.loc[busqueda].to_dict()])
+        df_individual = (individual[["Nombre", "Puntaje_total", "Clasificacion"]])
+        return df_individual
+        

@@ -9,11 +9,20 @@ from procesos import rendimiento
 from procesos import DataAnalyzer
 from procesos import PuntajeAnalyzer
 
+def registro():
+     Rendimiento = rendimiento()
+     Rendimiento.registro()
+     archivo_existe = os.path.isfile('deportes.csv')
+     if not archivo_existe:
+         messagebox.showwarning("Error", "No existen datos")
+     else:
+        df = pd.read_csv(archivo)
+
 ventana = tk.Tk()
 ventana.title("Reporte de estadisticas del centro deportivo")
 ventana.geometry()
 
-boton_registro = tk.Button(ventana)
+boton_registro = tk.Button(ventana, text="Registrar participante", command= registro)
 boton_registro.grid(row=0, column=0)
 
 boton_reporte_general = tk.Button(ventana)

@@ -55,26 +55,28 @@ def terminar():
 
 ventana = tk.Tk()
 ventana.title("Reporte de estadisticas del centro deportivo")
+ventana.configure(bg="#c70c0c")
 ventana.geometry()
 
-boton_registro = tk.Button(ventana, text="Registrar participante", command= registro)
+boton_registro = tk.Button(ventana, text="Registrar participante",  bg ="#00b3ff", command= registro)
 boton_registro.grid(row=0, column=0)
 
-boton_reporte_general = tk.Button(ventana, text="Mostrar reporte general", command=reporte)
+boton_reporte_general = tk.Button(ventana, text="Mostrar reporte general",  bg ="#00b3ff", command=reporte)
 boton_reporte_general.grid(row=0, column=1)
 
-boton_reporte_individual = tk.Button(ventana, text="Buscar participante", command= reporte_individual)
+boton_reporte_individual = tk.Button(ventana, text="Buscar participante", bg ="#00b3ff", command= reporte_individual)
 boton_reporte_individual.grid(row=0, column=2)
 
-boton_salir = tk.Button(ventana, text="Salir", command=terminar)
+boton_salir = tk.Button(ventana, text="Salir",  bg ="#00b3ff", command=terminar)
 boton_salir.grid(row=1, column=0)
 
-text_area = ScrolledText(ventana, width= 70, height= 30)
+text_area = ScrolledText(ventana, width= 70, height= 30, bg = "#6a6088")
 text_area.grid(row=1, column=1)
-text_area2 = ScrolledText(ventana, width= 100, height= 30)
+text_area2 = ScrolledText(ventana, width= 100, height= 30, bg = "#6a6088")
 text_area2.grid(row=1, column=2)
-text_area3 = ScrolledText(ventana, width=70, height= 10)
+text_area3 = ScrolledText(ventana, width=70, height= 10, bg = "#8478a9")
 text_area3.grid(row=2, column=1)
+
 
 content_frame = tk.Frame(ventana)
 content_frame.grid(row=1, column=2)
